@@ -25,7 +25,7 @@ To be especially safe, the spec sheet suggests a 2K resistor between
 3.3V and the LED anode. I did't do that myself but I probably should
 have.
 
-- cathode goes to XIO-P7
+- cathode goes to XIO-P0
 - anode goes to 3.3V (through 2K resistor to be safe)
 
 ## How To Run
