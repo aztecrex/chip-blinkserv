@@ -5,8 +5,7 @@ controlling its devices.
 
 ## Demos
 
-### LED - turn led on and off
+### LED
 
-Prototype that uses simple page redirects to display its home.
-
+Turn LED on and off via Web API.
 
