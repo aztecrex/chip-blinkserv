@@ -24,16 +24,6 @@ def index():
 def led():
     return render_template('led.html')
 
-@app.route("/on")
-def on():
-    ledTurnOn()
-    return redirect(url_for('led'))
-
-@app.route("/off")
-def off():
-    ledTurnOff()
-    return redirect(url_for('led'))
-
 @app.route("/api/led")
 def apiLedStatus():
     rep = render_template('led.json', status=ledIsOn())
