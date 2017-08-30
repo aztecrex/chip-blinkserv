@@ -24,20 +24,21 @@ def index():
 def led():
     return render_template('led.html')
 
+def ledResponse(status):
+    rep = render_template('led.json', status=status)
+    return Response(rep, mimetype='application/json')
+
 @app.route("/api/led")
 def apiLedStatus():
-    rep = render_template('led.json', status=ledIsOn())
-    return Response(rep, mimetype='application/json')
+    return ledResponse(ledIsOn())
 
 @app.route("/api/led/on", methods=['POST'])
 def apiLedOn():
     ledTurnOn()
-    rep = render_template('led.json', status=True)
-    return Response(rep, mimetype='application/json')
+    return ledResponse(True)
 
 @app.route("/api/led/off", methods=['POST'])
 def apiLedOff():
     ledTurnOff()
-    rep = render_template('led.json', status=False)
-    return Response(rep, mimetype='application/json')
+    return ledResponse(False)
 
