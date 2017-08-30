@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<title>LED</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="navbar navbar-inverse">
+<div class="container">
+  <a class="navbar-brand" href="/">Chippy</a>
+</div>
+</div>
+<div class="container">
+  <h1>LED</h1>
+  <p>Lamp is <span id="status"></span></p>
+  <div>
+    <button id="turnon" onClick="lampOn()">Turn On</button>
+    <button id="turnoff" onClick="lampOff()">Turn Off</button>
+  </div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+<script>
+   function handleResponse(resp) {
+     $("#status").text(resp.status ? "ON" : "OFF");
+   }
+   function handleError(xhr, status, thrown) {
+     console.log("error: " + errorThrown);
+     console.log("Status: " + status);
+   }
+   function invoke(op, method) {
+     $.ajax({
+        url: "/api/" + op,
+        type: method,
+        dataType: "json"
+       })
+       .done(handleResponse)
+       .fail(handleError);
+   }
+   function lampOn() {
+     invoke("led/on", "POST");
+   }
+   function lampOff() {
+     invoke("led/off", "POST");
+   }
+   function lampCheck() {
+      invoke("led", "GET");
+   }
+   lampCheck();
+   
+</script>
+</body>
+</html>
+

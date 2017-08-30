@@ -1,0 +1,4 @@
+{
+  "status":{% if status %}true{% else %}false{% endif %}
+}
+
