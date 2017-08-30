@@ -61,7 +61,15 @@
    function lampCheck() {
       invoke("led", "GET");
    }
+   function monitor() {
+     setTimeout(function() {
+        lampCheck();
+        monitor();
+     }, 1000);
+   }
    lampCheck();
+   monitor();
+   
    
 </script>
 </body>
