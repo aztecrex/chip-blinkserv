@@ -9,9 +9,28 @@ controlling its devices.
 
 Turn LED on and off via Web API.
 
+## Hardware
+
+- C.H.I.P. tiny computer (4.4 OS tested)
+- for the LED demo, a LED
+
+### LED demo wiring
+
+The extended pins can sink enough current to light an LED. But only
+barely enough to light one by sourcing it. So, wire it so that LOW on
+the XIO pin turns on the lamp. The XIO pins on the C.H.I.P are weird
+if you are used to other GPIO chips.  See the docs for info.
+
+To be especially safe, the spec sheet suggests a 2K resistor between
+3.3V and the LED anode. I did't do that myself but I probably should
+have.
+
+- cathode goes to XIO-P7
+- anode goes to 3.3V (through 2K resistor to be safe)
+
 ## How To Run
 
-This project requires Python3 installed on a C.H.I.P. tiny computer.
+This project requires Python3 installed on the C.H.I.P. tiny computer.
 
 Install these depencies into your Python3 environment with `pip`.
 
